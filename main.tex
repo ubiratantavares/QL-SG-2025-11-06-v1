@@ -1,0 +1,453 @@
+\UseRawInputEncoding
+\documentclass[a4paper, 11pt]{article} % use 12pt para letra maior, 10pt para menor
+\usepackage[brazil]{babel}  
+\usepackage[utf8]{inputenc}
+\usepackage{mathptmx}  % Define Times New Roman como a fonte principal
+\usepackage{lmodern}			% Usa a fonte Latin Modern
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage[hidelinks]{hyperref}
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+\usepackage{float}
+% ---
+\usepackage{tabularx}
+\usepackage{ragged2e}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{url}
+\usepackage{hyperref}	
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\usepackage{booktabs} % Necessário para \toprule, \midrule, \bottomrule e \addlinespace
+\usepackage{tabularx} % Necessário para o ambiente tabularx
+\usepackage{amsmath} % Para o QL na fórmula, embora já funcione com o modo matemático básico
+\usepackage{geometry} % Necessário para ajustar as margens
+
+% 2. Otimização para caber em uma página A4 (Margens menores)
+\geometry{
+    a4paper,
+    margin=2.0cm, % Define margens de 1.5 cm em todos os lados (pode ajustar)
+}
+
+\setlength{\parindent}{0pt} % Remove o recuo de parágrafo para economizar espaço horizontal
+\setlength{\parskip}{0.5\baselineskip} % Adiciona espaço entre parágrafos (opcional, mas bom para leitura)
+
+\lstset{
+  language=Python,
+  inputencoding=utf8,
+  extendedchars=true,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{teal},
+  frame=single,
+  breaklines=true,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  captionpos=b
+}
+
+\usepackage{tabularx}
+\usepackage{booktabs} % para linhas horizontais elegantes
+
+% ---
+% Pacotes para ambiente matemático
+% ---
+\usepackage{amssymb} 
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+\usepackage{hyphenat}
+
+
+%\usepackage{natbib}            % Para reduzir espaçamento nas referências
+%\setlength{\bibsep}{0.0pt}
+%\def\bibfont{\footnotesize}
+
+\title{{\bf Identificação da Especialização Setorial em São Gonçalo/RJ: Estudo Baseado no Quociente Locacional} \\ \mbox{}
+}
+
+%\date{\today}
+\author{Ubiratan da Silva Tavares\\ \mbox{} \\ %
+ \mbox{} 
+}
+
+\begin{document}
+
+% ---
+% Faz o título na folha de rosto
+\maketitle
+
+
+%\begin{abstract}
+%Texto...
+%\end{abstract}
+
+\thispagestyle{empty}
+
+\newpage
+
+\vspace{0.5cm}
+
+\tableofcontents
+
+\thispagestyle{empty}
+
+\newpage
+
+\section{Introdução}
+
+O estudo da distribuição e concentração das atividades produtivas e dos fatores de produção no espaço geográfico constitui o objeto primordial da Economia Espacial e Regional. A preocupação central reside em compreender o que está aonde e por quê, buscando identificar as relações estruturais complexas que modelam o dinamismo econômico de diferentes localidades. No contexto do desenvolvimento, a tomada de decisão locacional pelos agentes econômicos (empresas e governo) é crucial, visando à eficiência máxima ou à minimização dos custos operacionais, especialmente os custos de transporte e de acesso ao mercado.
+
+Historicamente, o debate sobre o desenvolvimento regional converge para a análise de questões estruturais, como a concentração e aglomeração geográficas das atividades econômicas e as desigualdades na distribuição regional da renda. Identificar a especialização produtiva de uma área é, portanto, o ponto de partida essencial para a análise das potencialidades regionais e para o planejamento estratégico.
+
+Para a realização deste diagnóstico e para fornecer subsídios analíticos sobre o perfil econômico de um território, o presente estudo emprega o Quociente Locacional (QL). Esta é a medida de especialização regional mais frequente e difundida na literatura econômica. O QL atua como um indicador comparativo que revela a concentração relativa de um setor no Município de São Gonçalo (região de estudo) em relação à participação desse mesmo setor no Estado do Rio de Janeiro (região de referência). O resultado desta aplicação visa caracterizar o grau de especialização de São Gonçalo, fornecendo a base para a compreensão de sua estrutura econômica e de suas atividades potencialmente motoras ou básicas.
+
+\section{Fundamentação Teórica}
+
+A Fundamentação Teórica estabelece as bases conceituais sobre as quais se apoia a análise da especialização setorial, relacionando a metodologia do QL com as grandes correntes do pensamento espacial e da dinâmica regional.
+
+\subsection{O Objeto da Economia Regional e a Dinâmica Locacional}
+
+A Economia Regional e Espacial busca explicar as consequências das distâncias, do custo de transporte, da localização geográfica, e da concentração e aglomeração das atividades no espaço geográfico. O campo de estudo engloba as teorias da localização e a organização espacial da economia, que visam sintetizar as contribuições para a localização das atividades socioeconômicas (agrícolas, industriais e comerciais).
+
+As teorias fundamentais da localização visam essencialmente a interpretação das decisões empresariais em uma economia de mercado, focando no melhor sítio para se localizar, minimizando custos e maximizando o lucro. Essas teorias clássicas, por sua importância e origens histórico-doutrinárias, podem ser agrupadas.
+
+Um dos modelos seminais da ciência regional é o de \textit{Von Thünen}~\cite{vonthunen1826}, desenvolvido no início do século XIX. Seu modelo, o Estado Isolado, foi o primeiro a formalizar uma teoria da localização para atividades agrícolas, buscando explicar como diferentes culturas se organizariam espacialmente em torno de um centro consumidor com base no custo de transporte e na renda da terra. Embora focado na agricultura, esse modelo foi retomado a partir dos anos 1970 e até hoje é a principal referência para a organização do espaço urbano. Ele serve de base para entender a dinâmica da renda fundiária, onde o preço da terra tende a cair à medida que aumenta a distância do centro.
+
+Outra contribuição fundamental é a Teoria Weberiana da Localização Industrial. \textit{Weber}~\cite{weber1928} propôs que a decisão de localização industrial é influenciada por três fatores essenciais de âmbito regional: custo de transporte, custo da mão de obra e um fator composto pelas economias de aglomeração e desaglomeração. 
+
+O fator locacional constitui um ganho ou uma redução de custos obtidos ao se localizar em um dado ponto.
+
+A tendência à concentração, à centralização e à aglomeração geográfica é vista como inerente à própria organização capitalista de produção.
+
+\subsection{Desenvolvimento Regional, Desigualdade e o Modelo Centro-Periferia}
+
+O interesse pela especialização regional é inseparável do estudo do desenvolvimento regional, que frequentemente se manifesta de forma desigual.
+
+As teorias que visam explicar o desenvolvimento regional podem ser divididas em dois grandes grupos: as que demonstram a tendência natural à forte concentração geográfica das atividades econômicas e as que demonstram as condições de reversão da concentração ou de desconcentração.
+
+\textit{Myrdal}~\cite{myrdal1957} é o autor nuclear da formulação do conceito de causalidade circular e cumulativa. Essa teoria, que se filia à análise do desenvolvimento desigual, sugere que uma modificação inicial no sistema gera outras modificações que se amplificam na mesma direção, resultando em uma trajetória de agravamento crescente das disparidades. Baseia-se na ideia de que os efeitos polarizadores (\textit{backwash effects}), que concentram fatores produtivos e mão de obra qualificada nas regiões mais ricas, tendem a ser mais fortes do que os efeitos propulsores (\textit{spread effects}), que distribuiriam o crescimento para as periferias.
+
+Na mesma linha de pensamento, o modelo Centro-Periferia, notadamente desenvolvido por \textit{Friedmann}~\cite{friedmann1972}, estabelece que o desenvolvimento ocorre de maneira descontínua, sendo guiado por inovações originadas no centro. Essas inovações impõem relações de dominação com as periferias, que são subalternizadas.
+
+Neste modelo, a concentração de investimentos em uma ou duas regiões centrais, negligenciando o restante do território, imprime uma estrutura dualística na matriz espacial: um "centro" com rápido e intensivo desenvolvimento e uma "periferia" em estagnação ou declínio. A resultante dessa interação é um modelo de interdependências espaciais onde a região dominada está numa posição desfavorável, dependente dos ditames do centro.
+
+A busca pela especialização produtiva (como a realizada via QL) é, portanto, um exercício fundamental para identificar quais setores conferem ao município o estatuto de centro em determinadas atividades, permitindo avaliar sua capacidade de gerar desenvolvimento e contrariar os efeitos polarizadores (\textit{backwash effects}).
+
+O QL, que é a metodologia central deste estudo, é a medida de especialização regional mais frequente e difundida na literatura econômica, sendo também conhecido como índice de \textit{Hoover-Balassa}.
+
+O QL é a técnica mais comumente adotada nos estudos empíricos para determinar a Base Econômica de uma região. A Teoria da Base Econômica (ou Base Exportadora) é um instrumento de análise que distingue as atividades econômicas regionais em dois grupos:
+
+\begin{itemize}
+    \item \textbf{Atividades Básicas (Setor Exportador)}: Compreendem os setores que produzem bens e serviços para uso não local (bens e serviços de exportação). A ideia central é que estas atividades de exportação têm um papel estratégico e motor para o desenvolvimento regional ou local.
+    \item \textbf{Atividades Não-Básicas (Setor Local/Suporte)}: São aquelas orientadas para a satisfação das necessidades de consumo da própria população local.
+\end{itemize}
+
+A expansão da base econômica (setor básico) estimula a expansão do setor local (setor não-básico), através de um efeito multiplicador.
+
+O QL é um método indireto e popular, amplamente usado com base em fontes de dados secundárias. Ele compara a participação de um setor $Y$ na região de estudo $x$ (São Gonçalo) em relação à participação desse mesmo setor na região de referência $z$ (Estado do Rio de Janeiro).
+
+O QL é interpretado da seguinte forma:
+
+\begin{itemize}
+    \item \textbf{QL > 1}: A região $x$ possui maior concentração relativa do setor $Y$ do que a região de referência $z$. Isso é interpretado como um indicativo de especialização e da presença de atividades de exportação (setores básicos).
+    \item \textbf{QL < 1}: A participação do setor $Y$ na região $x$ é inferior à sua participação no espaço de referência, o que implica que a região não é especializada nesse setor em comparação com a base.
+\end{itemize}
+
+Embora o QL seja uma ferramenta valiosa, é crucial reconhecer suas limitações. Três fatores são considerados importantes na análise das medidas de localização: a base de comparação, o nível de agregação e as relações de causalidade.
+
+\begin{enumerate}
+    \item \textbf{Nível de Agregação}: O QL é sensível ao nível de agregação dos dados. Uma análise com um alto nível de agregação pode não revelar especializações significativas. Sugere-se a realização de uma sequência de exercícios usando um nível de agregação cada vez menor para observar as mudanças nos resultados.
+
+    \item \textbf{Base de Comparação}: A escolha da região de referência (o estado, neste caso) é fundamental, pois é ela que define a base em relação à qual a especialização é medida.
+
+    \item \textbf{Natureza Agregada}: O modelo de Base Econômica, embora útil, é agregado e possui um único multiplicador para representar todos os setores. Modelos mais avançados, como os de Insumo-Produto (IP), estendem essa ideia desagregando a produção, gerando multiplicadores por setor. Além disso, a separação entre atividades básicas e não-básicas por meio do QL é uma aproximação rudimentar.
+\end{enumerate}
+
+Em suma, o cálculo do QL para São Gonçalo é um passo analítico essencial, permitindo um diagnóstico inicial da estrutura produtiva e da especialização setorial do município dentro do contexto fluminense, com a consciência de que a metodologia, apesar de suas limitações, é fundamental para o desenvolvimento da Teoria da Base Econômica.
+
+\newpage
+
+\section{Metodologia}
+
+Para a realização da análise da especialização setorial do Município de São Gonçalo (RJ), faz-se necessária a utilização de métodos indiretos, que são frequentemente empregados devido à dificuldade em obter dados diretos sobre o comércio inter-regional. Estes métodos requerem apenas dados por setor de atividade econômica ao nível da região de estudo e do espaço de referência.
+
+\subsection{Coleta e Preparação dos Dados}
+
+A variável escolhida para mensurar o padrão locacional das atividades econômicas é o emprego formal. O emprego é notório por refletir a ocupação da mão de obra, o que, por sua vez, impacta a geração e distribuição da renda na região, incentivando o desenvolvimento local.
+
+A fonte de dados primária para a obtenção do emprego setorial é a Relação Anual de Informações Sociais (RAIS) disponibilizada pela Secretaria Especial de Previdência e Trabalho do Ministério de Economia. A RAIS é um registro administrativo de periodicidade anual, de fundamental importância para a caracterização do mercado de trabalho formal e para o controle estatístico. Os dados da RAIS tipicamente se referem aos saldos de empregados ocupados no final de cada ano (dezembro).
+
+A principal vantagem da RAIS para este estudo reside na sua capacidade de fornecer dados bastante consistentes sobre o emprego formal e estabelecimentos empregatícios com o nível de detalhamento espacial e setorial desejado, como o nível geográfico municipal.
+
+Seguindo as diretrizes metodológicas, foram utilizados dados referentes dos anos mais recentes  disponíveis (2022, 2023 e 2024). O acesso aos dados se dará pela plataforma eletrônica da Secretaria do Trabalho, utilizando-se a classificação setorial mais desagregada possível, conforme a orientação de empregar a classificação IBGE Subsetor.
+
+A Figura \ref{fig:figura1} ilustra um extrato dos dados resultante da consulta realizada na plataforma RAIS.
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=1.0\linewidth]{extrato.png}
+    \caption{Extrato dos dados}
+    \label{fig:figura1}
+\end{figure}
+
+\newpage
+
+O cálculo do QL exige a comparação de duas estruturas setoriais-espaciais: a economia em estudo e a economia de referência.
+
+\begin{enumerate}
+    \item \textbf{Região de Análise (Localidade i)}: O Município de São Gonçalo, Rio de Janeiro.
+    \item \textbf{Região de Referência (Base)}: O Estado do Rio de Janeiro.
+\end{enumerate}
+
+Para a aplicação do QL, que é um indicador de especialização regional, a informação sobre o emprego setorial deve ser organizada em uma matriz de dados, de forma que:
+
+\begin{itemize}
+    \item As linhas dessa matriz mostrarão a distribuição do emprego total da região (Município e Estado) entre os seus diferentes setores industriais ou atividades.
+
+    \item As colunas mostrarão a distribuição do total do emprego de uma determinada indústria/setor entre as diferentes regiões (no caso, comparando o município com o estado).
+\end{itemize}
+
+A preparação dos dados visa obter os quatro componentes essenciais para a fórmula do QL, conforme a expressão básica:
+
+$$
+QL_{ki}=\frac{\text{Proporção do Emprego do Setor k no Município i}}{\text{Proporção do Emprego do Setor k na Região de Referência}} = \frac{E_{ki}/E_i}{E_k/E}
+$$
+
+Onde:
+
+\begin{itemize}
+    \item $E_{ki}$ = Emprego no setor k no Município de São Gonçalo.
+    \item $E_i$ = Emprego total no Município de São Gonçalo.
+    \item $E_k$ = Emprego no setor k da localidade de referência (Estado do Rio de Janeiro).
+    \item $E$ = Emprego total da localidade de referência (Estado do Rio de Janeiro).
+\end{itemize}
+
+O cálculo será realizado para cada um dos setores da economia local, a fim de identificar aqueles com QL > 1, que indicam especialização relativa e a presença potencial de atividades de exportação (setores básicos).
+
+\subsection{Implementação Computacional}
+
+A análise da especialização produtiva, por meio do QL, exige a manipulação de matrizes de dados setoriais e temporais, tornando a implementação computacional um passo crucial. O QL, que é a medida de especialização regional mais difundida, compara a participação de um setor no Município de São Gonçalo (região de análise em relação ao Estado do Rio de Janeiro (região de referência).
+
+Para garantir que o código seja manutenível, escalável e de fácil leitura, adotou-se o paradigma da Programação Orientada a Objetos (POO) e os princípios SOLID, notadamente o Princípio da Responsabilidade Única. As tarefas são segregadas em classes distintas: a entrada de dados (leitura do arquivo "dados.csv"), a execução do cálculo matemático, a coordenação da análise temporal e a visualização gráfica dos resultados.
+
+Para a implementação, serão utilizadas as bibliotecas Python de referência: Pandas para estruturação e manipulação eficiente dos dados tabulares de emprego (RAIS), NumPy para operações algébricas de base, e Matplotlib/Seaborn para gerar representações gráficas da especialização setorial ao longo dos anos.
+
+A variável de mensuração é o emprego formal (Empregados), notório por refletir a ocupação da mão de obra e o potencial de desenvolvimento regional. Os dados para São Gonçalo para 2022, 2023 e 2024 são extraídos da fonte de dados obtida do RAIS.
+
+A Tabela~\ref{tab:responsabilidades_classes} apresenta as classes, as responsabilidades e as principais bibliotecas utilizadas no cálculo do QL, conforme a implementação em Programação Orientada a Objetos (POO) detalhada no Apêndice.
+
+Os princípios SOLID foram aplicados ao segregar as responsabilidades em classes como Leitor, Extrator, QL (cálculo), Analise (coordenação) e Visualizador.
+
+\begin{table}[h!]
+    \centering
+    \caption{Responsabilidades e bibliotecas principais das classes (Implementação POO/SOLID)}
+    \label{tab:responsabilidades_classes} % Adicionei um rótulo para referência
+    \begin{tabularx}{\textwidth}{@{}lXl@{}}
+        \toprule
+        \textbf{Classe} & \textbf{Responsabilidade} & \textbf{Biblioteca} \\
+        \midrule
+        \textbf{Leitor/Extrator} & Carregamento e estruturação inicial dos dados (\texttt{dados.csv}); e separação dos dados do Município (SG) e da Referência (RJ). & \textbf{Pandas} \\
+        \addlinespace[0.5em] % Adiciona espaço extra entre as linhas (opcional, mas bom para leitura)
+        \textbf{QL} & Execução da lógica matemática do QL. Realiza o cálculo vetorial da fórmula, comparando as proporções setoriais. & \textbf{NumPy} \\
+        \addlinespace[0.5em]
+        \textbf{Analise} & Coordenação da análise temporal (2022, 2023, 2024), aplicando a \texttt{QL} e compilando os resultados em um DataFrame. & \textbf{Pandas} \\
+        \addlinespace[0.5em]
+        \textbf{Visualizador} & Geração de gráficos de especialização (QL>1) para observação da dinâmica locacional. Responsável pela exibição formatada dos resultados. & \textbf{Matplotlib} \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\section{Resultados}
+
+A análise da especialização setorial do Município de São Gonçalo (SG) em relação ao Estado do Rio de Janeiro (RJ) foi realizada utilizando o QL. É um indicador comparativo de concentração relativa onde valores $QL > 1$ indicam Especialização Relativa e a presença potencial de atividades de exportação (setores básicos). A variável de mensuração utilizada foi o emprego formal, extraído da RAIS.
+
+O cálculo do QL para cada setor da economia local produziu a seguinte distribuição de valores:
+
+\noindent
+
+\begin{center}
+\renewcommand{\arraystretch}{1.2} % Aumenta um pouco o espaçamento entre linhas
+\begin{tabular}{p{0.35\textwidth} c c c}
+\toprule
+\textbf{Setor} & \textbf{QL\_2022} & \textbf{QL\_2023} & \textbf{QL\_2024} \\
+\midrule
+Extrativa Mineral & 0.0983 & 0.1160 & 0.1318 \\
+Prod. Mineral Não Metálico & 1.4191 & 1.0442 & 0.9657 \\
+Indústria Metalúrgica & 0.7458 & 0.9029 & 0.9455 \\
+Indústria Mecânica & 0.3534 & 0.3732 & 0.3605 \\
+Elétrico e Comunicações & 0.5792 & 0.5508 & 0.5512 \\
+Material de Transporte & \textbf{2.1110} & \textbf{2.7162} & \textbf{2.2578} \\ % Valores em negrito para destaque
+Madeira e Mobiliário & \textbf{1.6973} & \textbf{1.8385} & \textbf{1.8313} \\
+Papel e Gráfica & 0.2276 & 0.2827 & 0.2481 \\
+Borracha, Fumo, Couros & 0.6148 & 0.6180 & 0.6469 \\
+Indústria Química & \textbf{1.5533} & \textbf{1.7974} & \textbf{1.8777} \\
+Indústria Têxtil & \textbf{1.3906} & \textbf{1.5149} & \textbf{1.4535} \\
+Indústria Calçados & 0.9196 & 1.2945 & 1.0299 \\
+Alimentos e Bebidas & 0.8525 & 0.9747 & 0.9170 \\
+Serviço Utilidade Pública & 0.4198 & 0.4622 & 0.4728 \\
+Construção Civil & \textbf{1.3851} & \textbf{1.2178} & \textbf{1.1895} \\
+Comércio Varejista & \textbf{1.4535} & \textbf{1.5522} & \textbf{1.4500} \\
+Comércio Atacadista & \textbf{1.4987} & \textbf{1.4835} & \textbf{1.3915} \\
+Instituição Financeira & 0.5387 & 0.4561 & 0.4145 \\
+Adm Técnica Profissional & 0.4737 & 0.4888 & 0.4705 \\
+Transporte e Comunicações & \textbf{1.4279} & \textbf{1.4264} & \textbf{1.2903} \\
+Alojamento e Comunicações & 0.7027 & 0.8350 & 0.8147 \\
+Médicos Odontológicos Vet & 1.0139 & 0.9112 & 0.9911 \\
+Ensino & \textbf{1.1000} & \textbf{1.1933} & \textbf{1.3528} \\
+Administração Pública & 1.0235 & 0.7774 & 0.0000 \\
+Agricultura & 0.2484 & 0.3307 & 0.1840 \\
+Outros, ignorados & 0.1157 & 0.0000 & 0.0000 \\
+\{não classificados\} & 0.2656 & 0.0000 & 0.0000 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{0.5cm} % Adiciona um pequeno espaço vertical
+
+\newpage
+
+A Figura \ref{fig:evolucaoQL} ilustra a evolução temporal do QL para os nove setores da economia de São Gonçalo que mantiveram a condição de especialização relativa ($QL>1$) no período de 2022 a 2024. O gráfico, que utiliza o QL = 1 como linha de base (Limite de Especialização, marcado em vermelho tracejado), permite a visualização da intensidade da concentração setorial e de suas trajetórias dinâmicas.
+
+\begin{figure}[h!]
+    \centering
+    % Ajuste a largura conforme a necessidade do seu documento.
+    % Certifique-se de que o arquivo "grafico.png" está no mesmo diretório ou que o caminho está correto.
+    \includegraphics[width=1.1\textwidth]{grafico.png}
+    \caption{Evolução do QL para os Setores Especializados de São Gonçalo (2022-2024).}
+    \label{fig:evolucaoQL}
+\end{figure}
+
+Dentre o total de setores analisados, 9 (nove) mantiveram um QL consistentemente superior a 1 em todos os anos (2022, 2023 e 2024), caracterizando-os como a Base Econômica mais estável e motoras para o município.
+
+Os nove setores com especialização relativa consistente são:
+
+\begin{itemize}
+    \item Material de Transporte,
+    \item Madeira e Mobiliário,
+    \item Indústria Química,
+    \item Indústria Têxtil,
+    \item Construção Civil,
+    \item Comércio Varejista,
+    \item Comércio Atacadista,
+    \item Transporte e Comunicações,
+    \item Ensino
+\end{itemize}
+
+A distribuição e evolução temporal desses QLs (conforme ilustrado na Figura~\ref{fig:evolucaoQL}, que utiliza o $QL = 1$ como Limite de Especialização) demonstram os seguintes pontos de destaque sobre a estrutura produtiva de São Gonçalo:
+
+\begin{enumerate}
+    \item \textbf{Dominância e Volatilidade (Material de Transporte)}: O setor Material de Transporte exibe a maior especialização com margem substancial, atingindo um QL próximo a 2.75 em 2023. Esta alta concentração o posiciona como o principal motor de exportação do município. No entanto, a acentuada variação do QL ao longo do triênio também sugere que o setor é o mais sensível a flutuações e investimentos localizados.
+
+    \item \textbf{Estabilidade na Manufatura}: Os setores Madeira e Mobiliário e Indústria Química mantiveram um patamar de QL elevado (acima de 1.5) e apresentaram tendência de estabilidade ou leve crescimento contínuo, sugerindo que suas vantagens locacionais estão consolidadas.
+
+    \item \textbf{Núcleo de Comércio e Logística}: Os setores de Comércio Varejista, Comércio Atacadista e Transporte e Comunicações encontram-se agrupados na faixa intermediária (entre QL 1.25 e 1.5), o que demonstra a forte vocação de São Gonçalo como um polo regional de distribuição e serviços de suporte.
+
+    \item \textbf{Tendência em Serviços}: O setor de Ensino apresenta a menor intensidade de especialização entre os básicos, mas mostra uma tendência clara e constante de crescimento de seu QL, ultrapassando 1.3 em 2024, indicando uma especialização progressiva nos serviços educacionais.
+
+    \item \textbf{Flutuações}: Setores como Produção Mineral Não Metálico e Administração Pública apresentaram $QL > 1$ em 2022, mas caíram para $QL < 1$ nos anos seguintes, indicando perda de especialização relativa
+\end{enumerate}
+
+Em síntese, a representação gráfica confirma que a especialização setorial de São Gonçalo não é apenas um fenômeno pontual, mas sim uma característica estrutural, com o setor de Material de Transporte ditando a intensidade máxima e um conjunto de setores de Manufatura, Comércio e Serviços fornecendo a estabilidade e a resiliência necessárias à Base Econômica local.
+
+\noindent
+
+Dentre o total de setores analisados, 9 (nove) mantiveram um QL consistentemente superior a 1 em todos os anos (2022, 2023 e 2024), caracterizando-os como a Base Econômica mais estável e motoras para o município. Esses setores são: Material de Transporte, Madeira e Mobiliário, Indústria Química, Indústria Têxtil, Construção Civil, Comércio Varejista e Atacadista, Transporte e Comunicações e Ensino. 
+
+Alguns setores demonstraram flutuação na especialização:
+\begin{itemize}
+    \item Produção Mineral Não Metálico e Administração Pública apresentaram QL $> 1$ em 2022, mas caíram para QL $\leq 1$ nos anos seguintes, indicando perda de especialização relativa.
+    \item A Indústria de Calçados teve um QL $> 1$ apenas em 2023, sugerindo uma especialização pontual.
+\end{itemize}
+
+\newpage
+ 
+\section{Discussões}
+\label{sec:discussoes} % Adiciona um rótulo para referência cruzada
+
+Os resultados do QL não apenas listam os setores, mas fornecem a base para a interpretação de como São Gonçalo se posiciona na matriz fluminense.
+
+A identificação dos nove setores com especialização relativa consistente ($QL > 1$) indica que São Gonçalo possui uma \textbf{Base Econômica diversificada}.
+A Teoria da Base Econômica estabelece que a expansão das atividades básicas ($QL > 1$) é que estimula a expansão do setor não-básico através de um efeito multiplicador. Por isso, esses setores são \textbf{estratégicos e motoras} para o desenvolvimento regional ou local.
+
+O setor \textbf{Material de Transporte}, com QL em torno de 2.75, é o principal motor de exportação do município. A concentração neste subsetor industrial é particularmente relevante, pois a indústria de transformação (onde o Material de Transporte se enquadra) é um ramo de atividade que encerra maior potencial de competitividade e ganhos de produtividade. A \textbf{especialização produtiva} é crucial, pois as especializações são as que dinamizam a renda, o emprego e têm o potencial de gerar desenvolvimento e qualidade de vida.
+
+A especialização também se manifesta em setores ligados à distribuição:
+
+\begin{enumerate}
+    \item \textbf{Transporte e Logística}: A concentração em Transporte e Comunicações reforça a vocação logística do município. A especialização de indústrias em transporte é um fator locacional importante, e a localização geográfica de atividades ligadas ao transporte é crucial para estruturar apropriadamente os espaços econômicos, induzir novos processos de desenvolvimento e aumentar a competitividade do território.
+
+    \item \textbf{Economias de Aglomeração e Centralidade}: Setores como Comércio Varejista e Comércio Atacadista com QL elevado sugerem que São Gonçalo atua como um polo regional de distribuição e serviços de suporte. Esta concentração de atividades é um reflexo das \textbf{economias de aglomeração} e sugere que o município funciona como um centro que pode estar fornecendo bens e serviços para cidades do seu entorno. A especialização nestas áreas fortalece São Gonçalo frente aos efeitos polarizadores (\textit{backwash effects}) que tendem a concentrar fatores produtivos nas regiões mais ricas.
+\end{enumerate}
+
+São Gonçalo, ao apresentar $QL > 1$ em nove setores, demonstra possuir um protagonismo e dinamismo local/regional que vai além da simples função de cidade-dormitório ou fornecedora de mão de obra para a capital:
+
+\begin{itemize}
+    \item \textbf{Nova Divisão Territorial do Trabalho}: A articulação funcional, com especialização industrial e em serviços, posiciona São Gonçalo em uma nova divisão territorial do trabalho, onde, além de ser um fornecedor de mão de obra, é um fornecedor de bens e serviços essenciais (Material de Transporte, Comércio) que sustentam o funcionamento das economias vizinhas ou da metrópole.
+
+    \item \textbf{Subsídio à Política Pública}: O conhecimento da estrutura produtiva e a identificação precisa desses setores especializados, fornecem diagnósticos e percepções analíticas que podem subsidiar tomadas de decisão e proposições de políticas e de planejamentos específicos.
+\end{itemize}
+
+\newpage
+
+\section{Conclusões}
+
+O presente estudo, utilizando o QL, atingiu seu objetivo ao caracterizar o grau de especialização de São Gonçalo e fornecer a base para a compreensão de sua estrutura econômica.
+
+Conclui-se que o Município de São Gonçalo possui uma Especialização Relativa Estável e Consistente em 9 (nove) setores da economia, identificados por apresentarem $QL > 1$ no período de 2022 a 2024. Esses setores constituem a base de exportação do município, com destaque para a Indústria de Material de Transporte como o principal motor. Essa base confere ao município um papel de polo gerador de desenvolvimento e capacidade de fornecer bens e serviços para além de sua demanda local, o que é crucial para contrariar os efeitos regressivos inerentes ao desenvolvimento regional desigual.
+
+Embora o QL seja a técnica mais comumente adotada nos estudos empíricos da base econômica, e sirva para fornecer um diagnóstico inicial da estrutura produtiva e especialização setorial, ele é uma aproximação rudimentar na separação entre setores básicos e não-básicos.
+
+Para estudos futuros, visando validar e detalhar o real impacto no desenvolvimento regional, sugere-se a utilização de modelos mais desagregados, como os de Insumo-Produto (IP), que estendem a ideia do QL ao desagregar a produção e gerar multiplicadores por setor. A continuidade da pesquisa é essencial para identificar novas potencialidades e gargalos ao desenvolvimento regional endógeno.
+
+% ======================================================
+% APÊNDICES
+% ======================================================
+\newpage
+\appendix
+\section*{Apêndices}
+\addcontentsline{toc}{section}{Apêndices}
+
+\section{Script: leitor.py}
+\input{apendices/leitor.tex}
+
+\newpage
+
+\section{Script: extrator.py}
+\input{apendices/extrator.tex}
+
+\newpage
+
+\section{Script: ql.py}
+\input{apendices/ql.tex}
+
+\newpage
+
+\section{Script: analise.py}
+\input{apendices/analise.tex}
+
+\newpage
+
+\section{Script: visualizador.py}
+\input{apendices/visualizador.tex}
+
+\newpage
+
+\section{Script: app.py}
+\input{apendices/app.tex}
+
+% ======================================================
+% REFERÊNCIAS
+% ======================================================
+\newpage
+\addcontentsline{toc}{section}{Referências}
+\bibliographystyle{unsrt}
+\bibliography{Bibliografia}
+
+\end{document}
